@@ -14,3 +14,13 @@ function textLiner( t ) {
 	
 	return inProperty 
 	} 
+
+/* sample 
+
+keyFilter( keys, ({ KeyCodes, __type, Text }) => 
+	   [ 37, 39 ] .some( v => KeyCodes ?.[ 0 ] === v ) 
+	|| __type .match( /Mouse/ ) 
+	|| Text .match( /[k]/ ) 
+	) 
+
+*/ 
