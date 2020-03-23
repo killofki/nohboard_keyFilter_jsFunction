@@ -1,6 +1,6 @@
-typeof keyFilter( 
-	  keys /* Function( `return ${ "keyboard.json" }` ) */ 
-	, ({ ... properties }) => booleanValue 
-	) 
-=== 'string' 
-// for Nohboard/keyboards/.. 
+typeof keyFilter( <br/> 
+	  keys /* Function( `return ${ "keyboard.json" }` ) */ <br/> 
+	, ({ ... properties }) => booleanValue <br/> 
+	) <br/> 
+=== 'string' <br/> 
+// for Nohboard/keyboards/.. <br/> 
