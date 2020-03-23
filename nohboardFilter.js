@@ -3,6 +3,6 @@ function textLiner( t ) {
 	let inProperty = t .replace( /:/g, ': ' ) 
 	
 	return inProperty 
-	) 
+	} 
 
 function objFilter( o, F ) { return Object .fromEntries( Object .entries( o ) .map( F ) ) } 
