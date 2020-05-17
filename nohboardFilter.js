@@ -8,6 +8,14 @@ function keyFilter( o, F ) {
 	return textLiner( text ) 
 	} // -- keyFilter() 
 
+function keyList( o, F ) { 
+	let { Elements } = o 
+	o = Elements .filter( F ) 
+	let text = JSON .stringify(...[ o,, '\t' ]) 
+	
+	return textLiner( text ) 
+	} // -- keyList() 
+
 function textLiner( t ) { 
 	// 200511 json sillofki style // killofk style 
 	let pre = t .replace( /,([\n\r]+)(\t+)/g, '$1$2, ' ) 
