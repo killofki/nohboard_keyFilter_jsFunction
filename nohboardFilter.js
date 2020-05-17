@@ -10,12 +10,24 @@ function keyFilter( o, F ) {
 
 function textLiner( t ) { 
 	// 200511 json sillofki style // killofk style 
-	// let inLine = t .replace( /([\[\]{},])/g, '\n$1 ' ) 
-	// let inProperty = inLine .replace( /:/g, ': ' ) 
-	
-	// return inProperty 
-	return t 
+	let pre = t .replace( /,([\n\r]+)(\t+)/g, '$1$2, ' ) 
+	let prespace = pre .replace( /(\t+)((?!, ).*[\n\r]+)(?=\1, )/g, '$1  $2' ) 
+	let closer = prespace .replace( /(?<=([\n\r]|^)(\t+)(\t(?!\t).*[\n\r]+))(\2(?!\t)\})/g, '$2\t}' ) 
+	return closer 
 	} 
+
+function jsonKillofkiStyle( obj ) { 
+	let { stringify } = JSON 
+	jsonKillofkiStyle = obj => { 
+		let tabs = stringify(...[ obj,, '\t' ]) 
+		let pre = tabs .replace( /,([\n\r]+)(\t+)/g, '$1$2, ' ) 
+		let prespace = pre .replace( /(\t+)((?!, ).*[\n\r]+)(?=\1, )/g, '$1  $2' ) 
+		let closer = prespace .replace( /(?<=([\n\r]|^)(\t+)(\t(?!\t).*[\n\r]+))(\2(?!\t)\})/g, '$2\t}' ) 
+		return closer 
+		} // -- lazy() 
+	return jsonKillofkiStyle( obj ) // lazy 
+	} // -- jsonKillofkiStyle() 
+
 
 /* sample 
 
