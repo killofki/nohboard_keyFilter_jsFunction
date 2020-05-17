@@ -9,6 +9,7 @@ function keyFilter( o, F ) {
 	} 
 
 function textLiner( t ) { 
+	// 200511 json sillofki style // killofk style 
 	// let inLine = t .replace( /([\[\]{},])/g, '\n$1 ' ) 
 	// let inProperty = inLine .replace( /:/g, ': ' ) 
 	
