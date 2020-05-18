@@ -3,17 +3,26 @@ document .body .onkeydown = console .log
 function keyFilter( o, F ) { 
 	let { Elements } = o 
 	o .Elements = Elements .filter( F ) 
-	let text = JSON .stringify( o ) 
+	let text = JSON .stringify(...[ o,, '\t' ]) 
 	
 	return textLiner( text ) 
-	} 
+	} // -- keyFilter() 
+
+function keyList( o, F ) { 
+	let { Elements } = o 
+	o = Elements .filter( F ) 
+	let text = JSON .stringify(...[ o,, '\t' ]) 
+	
+	return textLiner( text ) 
+	} // -- keyList() 
 
 function textLiner( t ) { 
-	let inLine = t .replace( /([\[\]{},])/g, '\n$1 ' ) 
-	let inProperty = inLine .replace( /:/g, ': ' ) 
-	
-	return inProperty 
-	} 
+	// 200511 json sillofki style // killofk style 
+	let pre = t .replace( /,([\n\r]+)(\t+)/g, '$1$2, ' ) 
+	let prespace = pre .replace( /(\t+)((?!, ).*[\n\r]+)(?=\1, )/g, '$1  $2' ) 
+	let closer = prespace .replace( /(?<=([\n\r]|^)(\t+)(\t(?!\t).*[\n\r]+))(\2(?!\t)\})/g, '$2\t}' ) 
+	return closer 
+	} // -- textLiner() 
 
 /* sample 
 
